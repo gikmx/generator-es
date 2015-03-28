@@ -1,0 +1,21 @@
+{
+  "name": "StringPath",
+  "version": "0.0.1",
+  "description": "use a JSON object as a variable tree.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "string",
+    "path",
+    "gik",
+    "gikmx",
+    "etor",
+    "et0r",
+    "json",
+    "tree"
+  ],
+  "author": "Héctor Menéndez <etor@gik.mx> (http://gik.mx)",
+  "license": "MIT"
+}
