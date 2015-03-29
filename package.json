@@ -1,31 +1,44 @@
 {
-  "name": "ChangeMe",
+  "name": "generator-es",
   "version": "0.0.1",
-  "description": "ChangeMe",
-  "main": "build/index.js",
-  "keywords": [],
+  "description": "A yeoman-generator for ECMA-SCRIPT apps (ES6) includes: Babel, Mocha - Chai, ESLint & Istanbul - Coverall - Travis",
+  "main": "app/index.js",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "yeoman-generator": "^0.18.10",
+    "yosay": "^1.0.3"
+  },
+  "devDependencies":{},
+  "scripts": {
+    "test": "echo \"Error: no tests available\" && exit 0"
+  },
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/gikmx/generator-es.git"
+  },
+  "keywords":[
+    "yeoman",
+    "generator",
+    "babel",
+    "es6",
+    "ecma",
+    "ecmascript",
+    "mocha",
+    "istanbul",
+    "travis",
+    "chai",
+    "coverall",
+    "eslint",
+    "lint",
+    "gik",
+    "gikmx",
+    "etor",
+    "et0r"
+  ],
   "author": "Héctor Menéndez <etor@gik.mx> (http://gik.mx)",
   "license": "MIT",
-  "scripts": {
-    "test": "gulp test",
-    "build": "gulp build"
+  "bugs":{
+    "url":"https://github.com/gikmx/generator-es/issues"
   },
-  "devDependencies": {
-    "babel": "^4.7.x",
-    "babel-eslint": "^2.0.x",
-    "chai": "^2.2.x",
-    "coveralls": "^2.11.x",
-    "del": "^1.1.x",
-    "gulp": "^3.8.x",
-    "gulp-babel": "^4.0.x",
-    "gulp-eslint": "^0.7.x",
-    "gulp-sourcemaps": "^1.5.x",
-    "gulp-spawn-mocha": "^2.0.x",
-    "lazypipe": "^0.2.x",
-    "mocha": "^2.2.x",
-    "mocha-unfunk-reporter": "^0.4.x"
-  },
-  "dependencies": {
-    "babel-runtime": "^5.0.0-beta1"
-  }
+  "homepage": "https://github.com/gikmx/generator-es"
 }
