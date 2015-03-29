@@ -1,34 +1,31 @@
 'use strict';
 
-///////////////////////////////////////////////////////////////////////////// NODE MODULES
+//--------------------------------------------------------------------------- NODE MODULES
 
 const Path  = require('path');
 
 
-////////////////////////////////////////////////////////////////////////////// NPM MODULES
+//---------------------------------------------------------------------------- NPM MODULES
 
 const Gulp   = require('gulp');
 const Lint   = require('gulp-eslint');
 const Source = require('gulp-sourcemaps');
 const Babel  = require('gulp-babel');
 const Mocha  = require('gulp-spawn-mocha');
-const Extend = require('extend');
 const Del    = require('del');
 const Pipes  = require('lazypipe');
 
 
-////////////////////////////////////////////////////////////////////////////////// ROUTING
+//------------------------------------------------------------------------- PATHS & ROUTES
 
 const Dir = new String(Path.resolve(Path.join(__dirname, '..')));
 
-for (let dir of ['src', 'test', 'build', '.conf']){
-	let prop = { value:Path.join(String(Dir), dir) };
-	Object.defineProperty(Dir, dir, Extend(prop, {
-		configurable : false,
-		enumerable   : true,
-		writable     : false
-	}));
-}
+for (let dir of ['src', 'test', 'build', '.conf']) Object.defineProperty(Dir, dir, {
+	value        : Path.join(String(Dir), dir),
+	writable     : false,
+	enumerable   : true,
+	configurable : false
+});
 
 const Route = {
 	src  : [Path.join(Dir.src, '/**/*.js')],
@@ -36,7 +33,7 @@ const Route = {
 };
 
 
-//////////////////////////////////////////////////////////////////////////// CONFIGURATION
+//-------------------------------------------------------------------------- CONFIGURATION
 
 const Config = {};
 
@@ -69,12 +66,12 @@ Config.mocha = {
 };
 
 
-/////////////////////////////////////////////////////////////////////////// ERROR HANDLING
+//------------------------------------------------------------------------- ERROR HANDLING
 
 const onError = function(){ process.exit(1); };
 
 
-//////////////////////////////////////////////////////////////////////////////////// TASKS
+//---------------------------------------------------------------------------------- TASKS
 
 Gulp.task('build', ['clean', 'lint', 'test'], function(){
 	return Gulp.src(Route.src)

@@ -1,37 +1,28 @@
 {
-  "name": "StringPath",
+  "name": "ChangeMe",
   "version": "0.0.1",
-  "description": "use a JSON object as a variable tree.",
+  "description": "ChangeMe",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "keywords": [
-    "string",
-    "path",
-    "gik",
-    "gikmx",
-    "etor",
-    "et0r",
-    "json",
-    "tree"
-  ],
+  "keywords": [],
   "author": "Héctor Menéndez <etor@gik.mx> (http://gik.mx)",
   "license": "MIT",
+  "scripts": {
+    "test": "gulp test",
+    "build": "gulp build"
+  },
   "devDependencies": {
-    "babel": "^4.7.16",
-    "babel-eslint": "^2.0.2",
-    "chai": "^2.2.0",
-    "del": "^1.1.1",
-    "extend": "^2.0.0",
-    "gulp": "^3.8.11",
-    "gulp-babel": "^4.0.0",
-    "gulp-eslint": "^0.7.0",
-    "gulp-sourcemaps": "^1.5.1",
-    "gulp-spawn-mocha": "^2.0.1",
-    "lazypipe": "^0.2.2",
-    "mocha": "^2.2.1",
-    "mocha-unfunk-reporter": "^0.4.0"
+    "babel": "^4.7.x",
+    "babel-eslint": "^2.0.x",
+    "chai": "^2.2.x",
+    "del": "^1.1.x",
+    "gulp": "^3.8.x",
+    "gulp-babel": "^4.0.x",
+    "gulp-eslint": "^0.7.x",
+    "gulp-sourcemaps": "^1.5.x",
+    "gulp-spawn-mocha": "^2.0.x",
+    "lazypipe": "^0.2.x",
+    "mocha": "^2.2.x",
+    "mocha-unfunk-reporter": "^0.4.x"
   },
   "dependencies": {
     "babel-runtime": "^5.0.0-beta1"
