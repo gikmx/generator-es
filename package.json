@@ -27,9 +27,8 @@
     "gulp": "^3.8.11",
     "gulp-babel": "^4.0.0",
     "gulp-eslint": "^0.7.0",
-    "gulp-mocha": "^2.0.0",
     "gulp-sourcemaps": "^1.5.1",
-    "gulp-util": "^3.0.4",
+    "gulp-spawn-mocha": "^2.0.1",
     "lazypipe": "^0.2.2",
     "mocha": "^2.2.1",
     "mocha-unfunk-reporter": "^0.4.0"

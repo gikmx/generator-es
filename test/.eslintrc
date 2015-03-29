@@ -5,8 +5,9 @@
 		"node"    : true
 	},
 	"globals":{
-		"describe": true,
-		"it": true
+		"it"       : true,
+		"describe" : true,
+		"expect"   : true
 	},
 	"rules":{
 		"quotes"               : [2, "single"],
