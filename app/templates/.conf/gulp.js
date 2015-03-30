@@ -2,8 +2,8 @@
 
 //--------------------------------------------------------------------------- NODE MODULES
 
-const Path  = require('path');
-
+const Path = require('path');
+const Exec = require('child_process').exec;
 
 //---------------------------------------------------------------------------- NPM MODULES
 
@@ -12,7 +12,9 @@ const Lint   = require('gulp-eslint');
 const Source = require('gulp-sourcemaps');
 const Babel  = require('gulp-babel');
 const Mocha  = require('gulp-spawn-mocha');
+const Watch  = require('gulp-watch');
 const Del    = require('del');
+const Chalk  = require('chalk');
 
 
 //------------------------------------------------------------------------- PATHS & ROUTES
@@ -28,8 +30,9 @@ for (let dir of ['src', 'test', 'build', '.conf', 'coverage'])
 	});
 
 const Route = {
-	src  : [Path.join(Dir.src, '/**/*.js')],
-	test : [Path.join(Dir.test, '/**/*.js')]
+	src   : [Path.join(Dir.src, '/**/*.js')],
+	test  : [Path.join(Dir.test, '/**/*.js')],
+	index : Path.resolve(Dir.build, 'index.js')
 };
 
 
@@ -106,4 +109,35 @@ Gulp.task('build', ['clean', 'lint', 'test'], function(){
 		.pipe(Babel(Config.babel))
 		.pipe(Source.write()) // inline sourcemaps
 		.pipe(Gulp.dest(Dir.build));
+});
+
+Gulp.task('watch', ['build'], function(){
+
+	let firstrun = true;
+
+	const onOutput = function(buffer){
+		process.stdout.write(buffer.toString('utf-8'));
+	};
+
+	const onBuild = function(){
+		let proc  = Exec(process.execPath + ' ' + Route.index);
+		proc.stdout.on('data', onOutput);
+		proc.stderr.on('data', onOutput);
+		proc.on('error', function(err){ throw err; });
+		proc.on('exit', function(){
+			process.stdout.write('\n\n' + Chalk.yellow('Waiting for changes…') + '\n');
+		});
+	};
+
+	Watch(Route.src.concat(Route.test).concat([__filename]), function(file){
+		let gulp = Gulp.start('build');
+		if (!firstrun) return;
+		gulp.on('task_stop', function(e){
+			if (e.task !== 'build') return;
+			firstrun = false;
+			onBuild();
+		});
+	});
+
+	onBuild();
 });

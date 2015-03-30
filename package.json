@@ -1,7 +1,7 @@
 {
   "name": "generator-es",
-  "version": "0.0.1",
-  "description": "A yeoman-generator for ECMA-SCRIPT apps (ES6) includes: Babel, Mocha - Chai, ESLint & Istanbul - Coverall - Travis",
+  "version": "0.0.2",
+  "description": "A yeoman-generator for ECMA Script apps (ES6) includes: Babel, Mocha-Chai, ESLint & Istanbul-Coverall-Travis",
   "main": "app/index.js",
   "dependencies": {
     "chalk": "^1.0.0",
@@ -20,6 +20,7 @@
     "yeoman",
     "generator",
     "babel",
+    "traceur",
     "es6",
     "ecma",
     "ecmascript",

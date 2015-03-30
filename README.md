@@ -9,11 +9,12 @@
 * Coveralls & Travis
 * NPM ignores source & tests
 * GIT ignores build
+* Basic watching (alpha)
 
 ## Installation
 
     npm install -g yo
-    npm insyall -g generator-es
+    npm install -g generator-es
     mkdir project && cd $_
     yo es
 

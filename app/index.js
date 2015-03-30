@@ -87,17 +87,13 @@ module.exports = Yeoman.generators.Base.extend({
 				if (stat.isDirectory()) continue;
 				tmp  = dir.replace(root,'').replace('/','');
 				dest = Path.join(tmp, file.indexOf('_') === 0? file.slice(1) : file);
-				file = Path.join(tmp, file);
-
-				self.fs.copyTpl(
-					self.templatePath(file),
-					self.destinationPath(dest),
-					self.VARS
-				);
+				file = self.templatePath(Path.join(tmp, file));
+				dest = self.destinationPath(dest);
+				console.info('ini » ', file, dest, self.VARS);
+				self.fs.copyTpl(file, dest, self.VARS);
+				console.info('end » ');
 			}
 		}
-
-
 	},
 
 	install: function(){
