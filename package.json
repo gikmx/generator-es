@@ -1,6 +1,6 @@
 {
   "name": "generator-es",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A yeoman-generator for ECMA Script apps (ES6) includes: Babel, Mocha-Chai, ESLint & Istanbul-Coverall-Travis",
   "main": "app/index.js",
   "dependencies": {

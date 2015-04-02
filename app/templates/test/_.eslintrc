@@ -23,6 +23,7 @@
 		"new-cap"              : [0],
 		"no-underscore-dangle" : [0],
 		"no-process-exit"      : [0],
-		"no-new-wrappers"      : [0]
+		"no-new-wrappers"      : [0],
+		"camelcase"            : [0]
 	}
 }
