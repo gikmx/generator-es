@@ -3,13 +3,13 @@
 //--------------------------------------------------------------------------- NODE MODULES
 
 const Path = require('path');
-const Exec = require('child_process').exec;
 
 //---------------------------------------------------------------------------- NPM MODULES
 
 const Gulp   = require('gulp');
 const Lint   = require('gulp-eslint');
 const Source = require('gulp-sourcemaps');
+const SrcSup = require('gulp-sourcemaps-support');
 const Babel  = require('gulp-babel');
 const Mocha  = require('gulp-spawn-mocha');
 const Watch  = require('gulp-watch');
@@ -54,8 +54,10 @@ Config.lint = {
 
 Config.babel = {
 	optional      : ['runtime'],
-	sourceMap     : 'both',
+	sourceMap     : ['both'],
+	blacklist     : ['strict'], // removes use strict
 	sourceMapName : '.map',
+	sourceRoot    : Dir.src,
 	comments      : false
 };
 
@@ -65,7 +67,7 @@ Config.mocha = {
 	require   : Path.join(Dir['.conf'], 'chai'),
 	reporter  : 'mocha-unfunk-reporter',
 	compilers : 'js:babel/register',
-	istanbul  : {
+	istanbul  : process.env.NODE_ENV !== 'production'? false : {
 		dir: Path.join(Dir.toString(), 'coverage')
 	}
 };
@@ -105,9 +107,10 @@ Gulp.task('test', ['lint-test'], ()=>
 
 Gulp.task('build', ['clean', 'lint', 'test'], function(){
 	return Gulp.src(Route.src)
+		.pipe(SrcSup())
 		.pipe(Source.init())
 		.pipe(Babel(Config.babel))
-		.pipe(Source.write()) // inline sourcemaps
+		.pipe(Source.write('.')) // inline sourcemaps
 		.pipe(Gulp.dest(Dir.build));
 });
 
@@ -115,21 +118,11 @@ Gulp.task('watch', ['build'], function(){
 
 	let firstrun = true;
 
-	const onOutput = function(buffer){
-		process.stdout.write(buffer.toString('utf-8'));
-	};
-
 	const onBuild = function(){
-		let proc  = Exec(process.execPath + ' ' + Route.index);
-		proc.stdout.on('data', onOutput);
-		proc.stderr.on('data', onOutput);
-		proc.on('error', function(err){ throw err; });
-		proc.on('exit', function(){
-			process.stdout.write('\n\n' + Chalk.yellow('Waiting for changes…') + '\n');
-		});
+		process.stdout.write('\n\n' + Chalk.yellow('Waiting for changes…') + '\n\n');
 	};
 
-	Watch(Route.src.concat(Route.test).concat([__filename]), function(file){
+	Watch(Route.src.concat(Route.test).concat([__filename]), function(){
 		let gulp = Gulp.start('build');
 		if (!firstrun) return;
 		gulp.on('task_stop', function(e){

@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "test": "gulp test",
-    "build": "gulp build"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "devDependencies": {
     "babel": "^4.7.x",
@@ -21,6 +22,7 @@
     "gulp-babel": "^4.0.x",
     "gulp-eslint": "^0.7.x",
     "gulp-sourcemaps": "^1.5.x",
+    "gulp-sourcemaps-support":"*",
     "gulp-spawn-mocha": "^2.0.x",
     "gulp-watch": "^4.2.x",
     "lazypipe": "^0.2.x",
