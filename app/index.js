@@ -89,9 +89,7 @@ module.exports = Yeoman.generators.Base.extend({
 				dest = Path.join(tmp, file.indexOf('_') === 0? file.slice(1) : file);
 				file = self.templatePath(Path.join(tmp, file));
 				dest = self.destinationPath(dest);
-				console.info('ini » ', file, dest, self.VARS);
 				self.fs.copyTpl(file, dest, self.VARS);
-				console.info('end » ');
 			}
 		}
 	},
