@@ -28,7 +28,7 @@ Create your project's directory and CD into it.
 
 ## Run Tests
 
-Just write ES6 files (JS inside the `test` folder and then run:
+Just write ES6 files (JS) inside the `test` folder and then run:
 
 ```bash
 npm test

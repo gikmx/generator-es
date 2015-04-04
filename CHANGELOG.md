@@ -1,5 +1,7 @@
 # Changelog
-### v0.0.8
+### v0.0.9
+
+- Added 'asyncToGenerator' transformer to Babel configurations.
 - Updated babel-related modules to fix some known errors with the runtime.
 
 ### v0.0.6
