@@ -1,4 +1,6 @@
 # Changelog
+### v0.0.8
+- Updated babel-related modules to fix some known errors with the runtime.
 
 ### v0.0.6
 
