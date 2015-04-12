@@ -1,4 +1,12 @@
 # Changelog
+### v0.0.10
+
+- Generated gulpfile no longer tries to build when watching, it now tests.
+- Allowed the use of `xit` without declaration on testing.
+- Corrected a typo on the YAML file.
+- Added gulp, and prepublish scripts on `package.json`
+- Ignored coverage folder from npm and git.
+
 ### v0.0.9
 
 - Added 'asyncToGenerator' transformer to Babel configurations.
