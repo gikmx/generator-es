@@ -5,6 +5,7 @@
 		"node"    : true
 	},
 	"globals":{
+		"xit"      : true,
 		"it"       : true,
 		"describe" : true,
 		"expect"   : true
